@@ -1,32 +1,50 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
-  </div>
+  <v-app>
+    <v-content>
+      <transition name="fade" mode="out-in" >
+      <router-view/>
+      </transition>
+    </v-content>
+  </v-app>
 </template>
 
+<script>
+
+export default {
+  name: 'App',
+
+  components: {
+    
+  },
+
+  data: () => ({
+    //
+  }),
+};
+</script>
+
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+
+.fade-leave-active {
+  animation-duration: 0.5s;
+  animation-fill-mode: both;
+  animation-name: zoom;
+  
+  
 }
 
-#nav {
-  padding: 30px;
+.fade-leave-active {
+  animation-direction: reverse;
 }
 
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
+@keyframes fade {
+  from {
+    opacity: 0;
+    transform: scale3d(0.8, 7.3, 5.3);
+  }
 
-#nav a.router-link-exact-active {
-  color: #42b983;
+  100% {
+    opacity: 1;
+  }
 }
 </style>
